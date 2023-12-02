@@ -6,20 +6,14 @@ internal class Program
     {
         var bag = Set.Parse("12 red, 13 green, 14 blue");
 
-        int task1 = 0;
-        int task2 = 0;
+        List<Game> games = [];
         var lines = File.ReadAllLines(args[1]);
         foreach (var line in lines)
         {
-            var game = Game.Parse(line);
-            if (game.IsPossible(bag))
-            {
-                task1 += game.Number;
-            }
-            task2 += game.Union.Power;
+            games.Add(Game.Parse(line));
         }
-        Console.WriteLine($"Task 1: {task1}");
-        Console.WriteLine($"Task 2: {task2}");
+        Console.WriteLine("Task 1: " + games.Where(x => x.IsPossible(bag)).Sum(x => x.Number));
+        Console.WriteLine("Task 2: " + games.Sum(x => x.Union.Power));
     }
 }
 
