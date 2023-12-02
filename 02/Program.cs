@@ -95,11 +95,11 @@ internal class Game(int number, Set[] sets)
     // Example: "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green"
     public static Game Parse(string s)
     {
-        var parts = s.Split(':');
-        int number = int.Parse(parts[0].Split(" ")[1]);
+        var gameAndSets = s.Split(':');
+        int number = int.Parse(gameAndSets[0].Split(" ")[1]);
 
         List<Set> sets = [];
-        foreach (string setInput in parts[1].Split(";"))
+        foreach (string setInput in gameAndSets[1].Split(";"))
         {
             sets.Add(Set.Parse(setInput));
         }
