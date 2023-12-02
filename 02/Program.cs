@@ -25,7 +25,11 @@ internal class Program
 
 internal class Set
 {
-    private static readonly string[] s_colors = ["red", "green", "blue"];
+    const string RED = "red";
+    const string GREEN = "green";
+    const string BLUE = "blue";
+
+    private static readonly string[] s_colors = [RED, GREEN, BLUE];
 
     public readonly Dictionary<string, int> Cubes = [];
 
@@ -73,7 +77,7 @@ internal class Set
     }
 
     // conrete colors used as that's how the power is defined
-    public int Power => Cubes["red"] * Cubes["green"] * Cubes["blue"];
+    public int Power => Cubes[RED] * Cubes[GREEN] * Cubes[BLUE];
     
     public override string ToString() => string.Join(", ", s_colors.Select(x => $"{Cubes[x]} {x}"));
 }
