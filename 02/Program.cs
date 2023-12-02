@@ -90,14 +90,14 @@ internal class Game(int id, Set[] sets)
     public static Game Parse(string s)
     {
         var gameAndSets = s.Split(':');
-        int number = int.Parse(gameAndSets[0].Split(" ")[1]);
+        int id = int.Parse(gameAndSets[0].Split(" ")[1]);
 
         List<Set> sets = [];
         foreach (string setInput in gameAndSets[1].Split(";"))
         {
             sets.Add(Set.Parse(setInput));
         }
-        return new Game(number, [.. sets]);
+        return new Game(id, [.. sets]);
     }
 
     public override string ToString() => $"Game {Id}: {string.Join("; ", Sets.Select(x => x.ToString()))}";
