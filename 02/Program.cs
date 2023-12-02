@@ -12,7 +12,7 @@ internal class Program
         {
             games.Add(Game.Parse(line));
         }
-        Console.WriteLine("Task 1: " + games.Where(x => x.IsPossible(bag)).Sum(x => x.Number));
+        Console.WriteLine("Task 1: " + games.Where(x => x.IsPossible(bag)).Sum(x => x.Id));
         Console.WriteLine("Task 2: " + games.Sum(x => x.Union.Power));
     }
 }
@@ -76,9 +76,9 @@ internal class Set
     public override string ToString() => string.Join(", ", s_colors.Select(x => $"{Cubes[x]} {x}"));
 }
 
-internal class Game(int number, Set[] sets)
+internal class Game(int id, Set[] sets)
 {
-    public int Number { get; } = number;
+    public int Id { get; } = id;
 
     public Set[] Sets { get; } = sets;
 
@@ -100,5 +100,5 @@ internal class Game(int number, Set[] sets)
         return new Game(number, [.. sets]);
     }
 
-    public override string ToString() => $"Game {Number}: {string.Join("; ", Sets.Select(x => x.ToString()))}";
+    public override string ToString() => $"Game {Id}: {string.Join("; ", Sets.Select(x => x.ToString()))}";
 }
