@@ -7,7 +7,7 @@ internal class Program
         var bag = Set.Parse("12 red, 13 green, 14 blue");
 
         List<Game> games = [];
-        var lines = File.ReadAllLines(args[1]);
+        var lines = File.ReadAllLines(args[0]);
         foreach (var line in lines)
         {
             games.Add(Game.Parse(line));
